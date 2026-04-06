@@ -162,7 +162,7 @@ ul  { list-style: none; }
 }
 
 /* Nav links */
-.site-nav ul {
+.site-nav > ul {
   display: flex;
   align-items: center;
   gap: 4px;
@@ -861,7 +861,10 @@ ul  { list-style: none; }
 
   .site-nav {
     position: fixed;
-    inset: var(--header-h) 0 0 0;
+    top: var(--header-h);
+    left: 0;
+    right: 0;
+    height: calc(100svh - var(--header-h));
     background: #0A0A0A;
     padding: 28px 24px;
     overflow-y: auto;
