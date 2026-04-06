@@ -149,23 +149,16 @@ ul  { list-style: none; }
 /* Logo */
 .logo {
   display: flex;
-  flex-direction: column;
-  line-height: 1;
+  align-items: center;
   flex-shrink: 0;
 }
-.logo-name {
-  font-family: var(--font-head);
-  font-size: 1.45rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--white);
+.logo img {
+  height: 32px;
+  width: auto;
+  display: block;
 }
-.logo-tagline {
-  font-family: var(--font-head);
-  font-size: 0.6rem;
-  letter-spacing: 0.35em;
-  color: var(--accent);
-  text-transform: uppercase;
+.site-footer .logo img {
+  height: 36px;
 }
 
 /* Nav links */
@@ -260,6 +253,26 @@ ul  { list-style: none; }
 .nav-toggle.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
 .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* ── HERO TITLE LETTER ANIMATION ──────────────────────────── */
+.hero-title .char {
+  display: inline-block;
+  white-space: pre;
+  opacity: 0;
+  animation: charFadeIn 0.5s ease forwards;
+}
+.hero-title .char--accent { color: var(--accent); }
+
+@keyframes charFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ── HERO (homepage) ───────────────────────────────────────── */
 .hero {
   min-height: 100vh;
@@ -270,13 +283,19 @@ ul  { list-style: none; }
   position: relative;
   overflow: hidden;
 }
-/* Dark overlay for text readability */
+/* Dark overlay — starts fully black then fades to reveal background image */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.62);
+  background-color: rgba(0, 0, 0, 0.62);
+  animation: heroReveal 1.6s ease forwards;
   pointer-events: none;
+}
+
+@keyframes heroReveal {
+  from { background-color: #0E0E0E; }
+  to   { background-color: rgba(0, 0, 0, 0.62); }
 }
 /* Orange radial glow */
 .hero::after {
